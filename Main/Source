@@ -2552,6 +2552,3 @@ RunService:BindToRenderStep("AimLock", 0, function()
         CurrentCamera.CFrame = CFrame.lookAt(CurrentCamera.CFrame.Position, Hit.Position)
     end
 end)
-if game.Players.LocalPlayer.Name == "DONALDFARTYFACE2008" or game.Players.LocalPlayer.Name == "superkillerbrendo" then
-    game.Players.LocalPlayer:Kick ("RIPBOZO")
-end
