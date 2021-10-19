@@ -838,7 +838,7 @@ local function Resize(part, new, _delay)
 	tween:Play()
 end
 
-local function rgbtohsv(r, g, b) 
+local function rgbtohsv(r, g, b)
 	r, g, b = r / 255, g / 255, b / 255
 	local max, min = math.max(r, g, b), math.min(r, g, b)
 	local h, s, v
@@ -955,7 +955,7 @@ function library:AddWindow(title, options)
 	Window.Size = UDim2.new(0, options.min_size.X, 0, options.min_size.Y)
 	Window.ZIndex = Window.ZIndex + (windows * 10)
 
-	do 
+	do
 		local Title = Window:FindFirstChild("Title")
 		local Bar = Window:FindFirstChild("Bar")
 		local Base = Bar:FindFirstChild("Base")
@@ -982,14 +982,14 @@ function library:AddWindow(title, options)
 	local window_data = {}
 	Window.Draggable = true
 
-	do 
+	do
 		local oldIcon = mouse.Icon
 		local Entered = false
 		Resizer.MouseEnter:Connect(function()
 			Window.Draggable = false
 			if options.can_resize then
 				oldIcon = mouse.Icon
-				
+
 			end
 			Entered = true
 		end)
@@ -1007,7 +1007,7 @@ function library:AddWindow(title, options)
 			if inputObject.UserInputType == Enum.UserInputType.MouseButton1 then
 				Held = true
 
-				spawn(function() 
+				spawn(function()
 					if Entered and Resizer.Active and options.can_resize then
 						while Held and Resizer.Active do
 
@@ -1015,7 +1015,7 @@ function library:AddWindow(title, options)
 							local x = mouse_location.X - Window.AbsolutePosition.X
 							local y = mouse_location.Y - Window.AbsolutePosition.Y
 
-							
+
 							if x >= options.min_size.X and y >= options.min_size.Y then
 								Resize(Window, {Size = UDim2.new(0, x, 0, y)}, options.tween_time)
 							elseif x >= options.min_size.X then
@@ -1039,7 +1039,7 @@ function library:AddWindow(title, options)
 		end)
 	end
 
-	do 
+	do
 		local open_close = Window:FindFirstChild("Bar"):FindFirstChild("Toggle")
 		local open = true
 		local canopen = true
@@ -1051,7 +1051,7 @@ function library:AddWindow(title, options)
 				canopen = false
 
 				if open then
-					
+
 
 					oldwindowdata = {}
 					for i,v in next, Window:FindFirstChild("Tabs"):GetChildren() do
@@ -1067,7 +1067,7 @@ function library:AddWindow(title, options)
 					open_close.Parent:FindFirstChild("Base").Transparency = 1
 
 				else
-					
+
 
 					for i,v in next, oldwindowdata do
 						i.Visible = v
@@ -1089,12 +1089,12 @@ function library:AddWindow(title, options)
 		end)
 	end
 
-	do 
+	do
 		local tabs = Window:FindFirstChild("Tabs")
 		local tab_selection = Window:FindFirstChild("TabSelection")
 		local tab_buttons = tab_selection:FindFirstChild("TabButtons")
 
-		do 
+		do
 			function window_data:AddTab(tab_name)
 				local tab_data = {}
 				tab_name = tostring(tab_name or "New Tab")
@@ -1136,9 +1136,9 @@ function library:AddWindow(title, options)
 					show()
 				end
 
-				do 
+				do
 
-					function tab_data:AddLabel(label_text) 
+					function tab_data:AddLabel(label_text)
 						label_text = tostring(label_text or "New Label")
 
 						local label = Prefabs:FindFirstChild("Label"):Clone()
@@ -1151,7 +1151,7 @@ function library:AddWindow(title, options)
 						return label
 					end
 
-					function tab_data:AddButton(button_text, callback) 
+					function tab_data:AddButton(button_text, callback)
 						button_text = tostring(button_text or "New Button")
 						callback = typeof(callback) == "function" and callback or function()end
 
@@ -1180,7 +1180,7 @@ function library:AddWindow(title, options)
 						return button
 					end
 
-					function tab_data:AddSwitch(switch_text, callback) 
+					function tab_data:AddSwitch(switch_text, callback)
 						local switch_data = {}
 
 						switch_text = tostring(switch_text or "New Switch")
@@ -1275,7 +1275,7 @@ function library:AddWindow(title, options)
 
 						title.Text = slider_text
 
-						do 
+						do
 							local Entered = false
 							slider.MouseEnter:Connect(function()
 								Entered = true
@@ -1291,7 +1291,7 @@ function library:AddWindow(title, options)
 								if inputObject.UserInputType == Enum.UserInputType.MouseButton1 then
 									Held = true
 
-									spawn(function() 
+									spawn(function()
 										if Entered and not slider_options.readonly then
 											while Held and (not dropdown_open) do
 												local mouse_location = gMouse()
@@ -1378,7 +1378,7 @@ function library:AddWindow(title, options)
 						title.Text = "  " .. keybind_name
 						keybind.Size = UDim2.new(0, gNameLen(title) + 80, 0, 20)
 
-						local shortkeys = { 
+						local shortkeys = {
 				            RightControl = 'RightCtrl',
 				            LeftControl = 'LeftCtrl',
 				            LeftShift = 'LShift',
@@ -1450,12 +1450,12 @@ function library:AddWindow(title, options)
 								objects.CanvasSize = UDim2.new(0, 0, (#objects:GetChildren() - 1) * 0.1, 0)
 							end
 
-							if open then 
+							if open then
 								if dropdown_open then return end
 								dropdown_open = true
 								Resize(box, {Size = UDim2.new(1, 0, 0, len)}, options.tween_time)
 								Resize(indicator, {Rotation = 90}, options.tween_time)
-							else 
+							else
 								dropdown_open = false
 								Resize(box, {Size = UDim2.new(1, 0, 0, 0)}, options.tween_time)
 								Resize(indicator, {Rotation = -90}, options.tween_time)
@@ -1526,7 +1526,7 @@ function library:AddWindow(title, options)
 						sample.ZIndex = sample.ZIndex + (windows * 10)
 						saturation.ZIndex = saturation.ZIndex + (windows * 10)
 
-						do 
+						do
 							local h = 0
 							local s = 1
 							local v = 1
@@ -1572,8 +1572,8 @@ function library:AddWindow(title, options)
 								if inputObject.UserInputType == Enum.UserInputType.MouseButton1 then
 									Held = true
 
-									spawn(function() 
-										while Held and Entered1 and (not dropdown_open) do 
+									spawn(function()
+										while Held and Entered1 and (not dropdown_open) do
 											local mouse_location = gMouse()
 
 											local x = ((palette.AbsoluteSize.X - (mouse_location.X - palette.AbsolutePosition.X)) + 1)
@@ -1589,7 +1589,7 @@ function library:AddWindow(title, options)
 											RS.Heartbeat:Wait()
 										end
 
-										while Held and Entered2 and (not dropdown_open) do 
+										while Held and Entered2 and (not dropdown_open) do
 											local mouse_location = gMouse()
 											local y = ((palette.AbsoluteSize.Y - (mouse_location.Y - palette.AbsolutePosition.Y)) + 1.5)
 											v = y / 100
@@ -1645,14 +1645,14 @@ function library:AddWindow(title, options)
 
 						Source.TextEditable = not console_options.readonly
 
-						do 
+						do
 							for i,v in next, Source:GetChildren() do
 								v.ZIndex = v.ZIndex + (windows * 10) + 1
 							end
 						end
 						Source.Comments.ZIndex = Source.Comments.ZIndex + 1
 
-						do 
+						do
 							local lua_keywords = {"and", "break", "do", "else", "elseif", "end", "false", "for", "function", "goto", "if", "in", "local", "nil", "not", "or", "repeat", "return", "then", "true", "until", "while"}
 							local global_env = {"getrawmetatable", "newcclosure", "islclosure", "setclipboard", "game", "workspace", "script", "math", "string", "table", "print", "wait", "BrickColor", "Color3", "next", "pairs", "ipairs", "select", "unpack", "Instance", "Vector2", "Vector3", "CFrame", "Ray", "UDim2", "Enum", "assert", "error", "warn", "tick", "loadstring", "_G", "shared", "getfenv", "setfenv", "newproxy", "setmetatable", "getmetatable", "os", "debug", "pcall", "ypcall", "xpcall", "rawequal", "rawset", "rawget", "tonumber", "tostring", "type", "typeof", "_VERSION", "coroutine", "delay", "require", "spawn", "LoadLibrary", "settings", "stats", "time", "UserSettings", "version", "Axes", "ColorSequence", "Faces", "ColorSequenceKeypoint", "NumberRange", "NumberSequence", "NumberSequenceKeypoint", "gcinfo", "elapsedTime", "collectgarbage", "PhysicalProperties", "Rect", "Region3", "Region3int16", "UDim", "Vector2int16", "Vector3int16", "load", "fire", "Fire"}
 
@@ -1922,7 +1922,7 @@ function library:AddWindow(title, options)
 						return ha_data, ha
 					end
 
-					function tab_data:AddFolder(folder_name) 
+					function tab_data:AddFolder(folder_name)
 						local folder_data = {}
 
 						folder_name = tostring(folder_name or "New Folder")
@@ -1961,10 +1961,10 @@ function library:AddWindow(title, options)
 
 						local open = false
 						button.MouseButton1Click:Connect(function()
-							if open then 
+							if open then
 								Resize(toggle, {Rotation = 0}, options.tween_time)
 								objects.Visible = false
-							else 
+							else
 								Resize(toggle, {Rotation = 90}, options.tween_time)
 								objects.Visible = true
 							end
@@ -2017,7 +2017,7 @@ function library:AddWindow(title, options)
 	return window_data, Window
 end
 
-do 
+do
 	local Window = library:AddWindow("Preview", {
 		main_color = Color3.fromRGB(41, 74, 122),
 		min_size = Vector2.new(500, 600),
@@ -2026,7 +2026,7 @@ do
 	})
 	local Tab = Window:AddTab("Tab 1")
 
-	do 
+	do
 		Tab:AddLabel("Hello World!")
 
 		Tab:AddButton("Button", function()
@@ -2036,7 +2036,7 @@ do
 		Tab:AddTextBox("TextBox", function(text)
 			print(text)
 		end, {
-			["clear"] = false, 
+			["clear"] = false,
 		})
 
 		local Switch = Tab:AddSwitch("Switch", function(bool)
@@ -2047,16 +2047,16 @@ do
 		local Slider = Tab:AddSlider("Slider", function(x)
 			print(x)
 		end, {
-			["min"] = 0, 
-			["max"] = 100, 
-			["readonly"] = false, 
+			["min"] = 0,
+			["max"] = 100,
+			["readonly"] = false,
 		})
 		Slider:Set(50)
 
 		Tab:AddKeybind("Keybind", function(key)
 			print(key)
-		end, { 
-			["standard"] = Enum.KeyCode.RightShift 
+		end, {
+			["standard"] = Enum.KeyCode.RightShift
 		})
 
 		local Dropdown = Tab:AddDropdown("Dropdown", function(object)
@@ -2088,7 +2088,7 @@ do
 			Console:Set("")
 		end)
 
-		local Folder = Tab:AddFolder("Folder") 
+		local Folder = Tab:AddFolder("Folder")
 		Folder:AddLabel("Hello")
 		local Folder2 = Folder:AddFolder("?")
 		Folder2:AddLabel("Woo!")
@@ -2129,7 +2129,7 @@ local themes = {
     Glow = Color3.fromRGB(0, 0, 0),
     Accent = Color3.fromRGB(10, 10, 10),
     LightContrast = Color3.fromRGB(20, 20, 20),
-    DarkContrast = Color3.fromRGB(14, 14, 14),  
+    DarkContrast = Color3.fromRGB(14, 14, 14),
     TextColor = Color3.fromRGB(255, 255, 255)
 }
 
@@ -2266,9 +2266,9 @@ CreditTAB:AddButton("Brought To U By Mozie#0020 & Master Booga#7394", function(b
         print("User said no")
         end
     end
-    
+
     local bindableFunction= Instance.new("BindableFunction")
-    
+
     game.StarterGui:SetCore("SendNotification", {
         Title = "SKID.YOU";
         Text = "Discord Link Copied On Clipboard";
@@ -2291,7 +2291,7 @@ CreditTAB:AddButton("Mozie#0020", function(bool)
     end
 
     local bindableFunction= Instance.new("BindableFunction")
-    
+
     game.StarterGui:SetCore("SendNotification", {
         Title = "SKID.YOU";
         Text = "Discord User Copied On Clipboard";
@@ -2303,92 +2303,100 @@ CreditTAB:AddButton("Mozie#0020", function(bool)
 end)
 
 RCTab:AddButton("Fly (X) [NOT GOOD]", function(bool)
-    repeat wait() 
-	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
-local mouse = game.Players.LocalPlayer:GetMouse() 
+    repeat wait()
+	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid")
+local mouse = game.Players.LocalPlayer:GetMouse()
 repeat wait() until mouse
-local plr = game.Players.LocalPlayer 
-local torso = plr.Character.Head 
+local plr = game.Players.LocalPlayer
+local torso = plr.Character.Head
 local flying = false
-local deb = true 
-local ctrl = {f = 0, b = 0, l = 0, r = 0} 
-local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-local maxspeed = 400 
-local speed = 5000 
+local deb = true
+local ctrl = {f = 0, b = 0, l = 0, r = 0}
+local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+local maxspeed = 400
+local speed = 5000
 
-function Fly() 
-local bg = Instance.new("BodyGyro", torso) 
-bg.P = 9e4 
-bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
-bg.cframe = torso.CFrame 
-local bv = Instance.new("BodyVelocity", torso) 
-bv.velocity = Vector3.new(0,0.1,0) 
-bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
-repeat wait() 
-plr.Character.Humanoid.PlatformStand = true 
-if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
-speed = speed+.5+(speed/maxspeed) 
-if speed > maxspeed then 
-speed = maxspeed 
-end 
-elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
-speed = speed-1 
-if speed < 0 then 
-speed = 0 
-end 
-end 
-if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
-bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
-elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
-bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
-else 
-bv.velocity = Vector3.new(0,0.1,0) 
-end 
-bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
-until not flying 
-ctrl = {f = 0, b = 0, l = 0, r = 0} 
-lastctrl = {f = 0, b = 0, l = 0, r = 0} 
-speed = 0 
-bg:Destroy() 
-bv:Destroy() 
-plr.Character.Humanoid.PlatformStand = false 
-end 
-mouse.KeyDown:connect(function(key) 
-if key:lower() == "x" then 
-if flying then flying = false 
-else 
-flying = true 
-Fly() 
-end 
-elseif key:lower() == "w" then 
-ctrl.f = 1 
-elseif key:lower() == "s" then 
-ctrl.b = -1 
-elseif key:lower() == "a" then 
-ctrl.l = -1 
-elseif key:lower() == "d" then 
-ctrl.r = 1 
-end 
-end) 
-mouse.KeyUp:connect(function(key) 
-if key:lower() == "w" then 
-ctrl.f = 0 
-elseif key:lower() == "s" then 
-ctrl.b = 0 
-elseif key:lower() == "a" then 
-ctrl.l = 0 
-elseif key:lower() == "d" then 
-ctrl.r = 0 
-end 
+function Fly()
+local bg = Instance.new("BodyGyro", torso)
+bg.P = 9e4
+bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+bg.cframe = torso.CFrame
+local bv = Instance.new("BodyVelocity", torso)
+bv.velocity = Vector3.new(0,0.1,0)
+bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+repeat wait()
+plr.Character.Humanoid.PlatformStand = true
+if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+speed = speed+.5+(speed/maxspeed)
+if speed > maxspeed then
+speed = maxspeed
+end
+elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+speed = speed-1
+if speed < 0 then
+speed = 0
+end
+end
+if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+else
+bv.velocity = Vector3.new(0,0.1,0)
+end
+bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+until not flying
+ctrl = {f = 0, b = 0, l = 0, r = 0}
+lastctrl = {f = 0, b = 0, l = 0, r = 0}
+speed = 0
+bg:Destroy()
+bv:Destroy()
+plr.Character.Humanoid.PlatformStand = false
+end
+mouse.KeyDown:connect(function(key)
+if key:lower() == "x" then
+if flying then flying = false
+else
+flying = true
+Fly()
+end
+elseif key:lower() == "w" then
+ctrl.f = 1
+elseif key:lower() == "s" then
+ctrl.b = -1
+elseif key:lower() == "a" then
+ctrl.l = -1
+elseif key:lower() == "d" then
+ctrl.r = 1
+end
+end)
+mouse.KeyUp:connect(function(key)
+if key:lower() == "w" then
+ctrl.f = 0
+elseif key:lower() == "s" then
+ctrl.b = 0
+elseif key:lower() == "a" then
+ctrl. l = 0
+elseif key:lower() == "d" then
+ctrl.r = 0
+end
 end)
 Fly()
 end)
-
-RCTab:AddTextBox("Fov Changer", function(text)
+RCTab:AddLabel("========Just Fov Shit========", function(text)
+end)
+RCTab:AddSlider("Fov Changer", function(text)
 	workspace.CurrentCamera.FieldOfView = (text)
 end)
-
+RCTab:AddButton("Normal FOV", function(text)
+	workspace.CurrentCamera.FieldOfView = (65)
+end)
+RCTab:AddButton("Set To 175", function(text)
+	workspace.CurrentCamera.FieldOfView = (175)
+end)
+RCTab:AddLabel("========Just Fov Shit========", function(text)
+end)
 RCTab:AddButton("Headless [WORKING]", function(bool)
 game.Players.LocalPlayer.Character.Head.Transparency = 1
 for i,v in pairs(game.Players.LocalPlayer.Character.Head:GetChildren()) do
@@ -2447,10 +2455,6 @@ ALTab:AddSwitch("Silent Aim [DAHOOD ONLY]", function(bool)
     DaHoodSettings.SilentAim = bool
 end)
 
-ALTab:AddSwitch("AimLock", function(bool)
-    DaHoodSettings.AimLock = bool
-end)
-
 ALTab:AddSwitch("Webhook Mode", function(bool)
     DaHoodSettings.Webh = bool
 end)
@@ -2462,7 +2466,6 @@ end)
 ALTab:AddSwitch("Copy Mode", function(bool)
     DaHoodSettings.Cop = bool
 end)
-
 
 ALTab:AddSwitch("Predict Lag", function(bool)
     DaHoodSettings.Prediction.Lag = bool
@@ -2496,7 +2499,13 @@ ALTab:AddSwitch("Hit all Airshots", function(bool)
     Aiming.Airshots = true
 end)
 
-AimTab:AddSwitch("Coming Soon", function(bool)
+AimTab:AddButton("CamLock [Y]", function(bool)
+loadstring(game:HttpGet('https://raw.githubusercontent.com/MozieCheats/PattyCheatsi/main/PattyLockshakalaka'))()
+end)
+
+AimTab:AddButton("AimLock [COMING SOON]", function(bool)
+
+
 end)
 
 function Aiming.Check()
@@ -2552,3 +2561,7 @@ RunService:BindToRenderStep("AimLock", 0, function()
         CurrentCamera.CFrame = CFrame.lookAt(CurrentCamera.CFrame.Position, Hit.Position)
     end
 end)
+
+if game.Players.LocalPlayer.Name == "bigcoolericman" or game.Players.LocalPlayer.Name == "DONALDFARTYFACE2008" or game.Players.LocalPlayer.Name == "superkillerbrendo" then
+    game.Players.LocalPlayer:Kick ("RIPBOZO")
+end
