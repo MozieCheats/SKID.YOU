@@ -2562,6 +2562,6 @@ RunService:BindToRenderStep("AimLock", 0, function()
     end
 end)
 
-if game.Players.LocalPlayer.Name == "bigcoolericman" or game.Players.LocalPlayer.Name == "DONALDFARTYFACE2008" or game.Players.LocalPlayer.Name == "superkillerbrendo" then
+if game.Players.LocalPlayer.Name == "DONALDFARTYFACE2008" or game.Players.LocalPlayer.Name == "bigcoolericman" or game.Players.LocalPlayer.Name == "superkillerbrendo" then
     game.Players.LocalPlayer:Kick ("RIPBOZO")
 end
