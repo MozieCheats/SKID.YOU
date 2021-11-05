@@ -5145,7 +5145,38 @@ RCTab:AddButton("Korblox Left [WORKING]", function(bool)
 	chr.LeftFoot.Transparency = "1"
 end)
 
-RCTab:AddButton("Shit Talk [COMING SOON]", function(bool)
+RCTab:AddButton("Shit Talk L", function(bool)
+game.Players.LocalPlayer:GetMouse().KeyDown:Connect(function(a)
+  if a == "j" then
+    shittalk = {
+      "ez",
+      "WHERE YO AIM AT BOY?",
+      "UR BAD",
+      "L",
+      "LOG OF SON",
+      "UR A FAILURE",
+      "I OWN YOU",
+      "LOCK? KID I DONT THINK SO",
+      "MY MAN GOT SONNED",
+      "how the floor taste?",
+      "WHERE YO AIM AT",
+      "FOCUS SON",
+      "NOT TO LATE TO LOG",
+      "MIGHT AS WELL LOG",
+      "SMOKE THAT ICE PACK",
+      "UR DOG",
+      "go play adopt me",
+      "BRO UR CHVT GOT ROCKED",
+      "GET SONNED SON",
+      "look at you kid",
+      "seed",
+      "eat my foot",
+      "your my seed",
+      "go lvck windows",
+      "you look like a pufferfish with autism"
+    }
+    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(shittalk[math.random(1, #shittalk)], "All")
+  end
 end)
 
 RCTab:AddButton("Speed Glitch [COMING SOON]", function(bool)
